@@ -27,7 +27,7 @@ body {
 
 body {
   color: white;
-  font-family: var(--font-exo);
+  font-family: 'Exo 2', sans-serif;
 }
 
 /* Custom scrollbar */
@@ -75,13 +75,40 @@ html {
   justify-content: center;
 }
 
+/* Canvas transparency */
+canvas {
+  opacity: 1 !important;
+}
+
+/* HTML Overlay */
+.html-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.html-overlay nav,
+.html-overlay button,
+.html-overlay a {
+  pointer-events: auto;
+}
+
+/* Ensure canvas is interactive */
+canvas {
+  pointer-events: auto !important;
+}
+
 /* Font classes */
 .font-orbitron {
-  font-family: var(--font-orbitron);
+  font-family: 'Orbitron', monospace;
 }
 
 .font-exo {
-  font-family: var(--font-exo);
+  font-family: 'Exo 2', sans-serif;
 }
 
 /* Color utility classes */
@@ -107,6 +134,50 @@ html {
 
 .border-neon-blue {
   border-color: var(--neon-blue);
+}
+
+.border-neon-purple {
+  border-color: var(--neon-purple);
+}
+
+.bg-neon-blue {
+  background-color: var(--neon-blue);
+}
+
+/* Neon text effects */
+.neon-text {
+  color: var(--neon-blue);
+  text-shadow: 
+    0 0 10px var(--neon-blue),
+    0 0 20px var(--neon-blue),
+    0 0 30px var(--neon-blue);
+}
+
+.neon-purple {
+  color: var(--neon-purple);
+  text-shadow: 
+    0 0 10px var(--neon-purple),
+    0 0 20px var(--neon-purple),
+    0 0 30px var(--neon-purple);
+}
+
+.neon-green {
+  color: var(--neon-green);
+  text-shadow: 
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 30px var(--neon-green);
+}
+
+/* Glow effects */
+.glow-on-hover {
+  transition: all 0.3s ease;
+}
+
+.glow-on-hover:hover {
+  box-shadow: 
+    0 0 15px var(--neon-blue),
+    0 0 30px var(--neon-blue);
 }
 
 /* Mobile responsiveness */

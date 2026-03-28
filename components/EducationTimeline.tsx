@@ -80,7 +80,6 @@ const EducationTimeline = () => {
       <Text
         color="#ffffff"
         fontSize={0.5}
-        font="/fonts/orbitron.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, 3, 0]}
@@ -131,7 +130,6 @@ const EducationTimeline = () => {
             <Text
               color="#ffffff"
               fontSize={0.08}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="bottom"
               position={[0, 0.6, 0]}
@@ -145,7 +143,6 @@ const EducationTimeline = () => {
             <Text
               color={edu.color}
               fontSize={0.06}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="top"
               position={[0, -0.5, 0]}
@@ -158,7 +155,6 @@ const EducationTimeline = () => {
             <Text
               color="#ffffff"
               fontSize={0.05}
-              font="/fonts/orbitron.woff"
               anchorX="center"
               anchorY="top"
               position={[0, -0.7, 0]}
@@ -171,7 +167,6 @@ const EducationTimeline = () => {
               <Text
                 color="#ffffff"
                 fontSize={0.07}
-                font="/fonts/exo.woff"
                 anchorX="center"
                 anchorY="top"
                 position={[0, -1.2, 0]}

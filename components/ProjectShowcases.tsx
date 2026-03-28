@@ -62,7 +62,6 @@ const ProjectShowcases = () => {
       <Text
         color="#ffffff"
         fontSize={0.5}
-        font="/fonts/orbitron.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, 3, 0]}
@@ -106,7 +105,6 @@ const ProjectShowcases = () => {
             <Text
               color="#00f5ff"
               fontSize={0.15}
-              font="/fonts/orbitron.woff"
               anchorX="center"
               anchorY="top"
               position={[0, 0.8, 0.1]}
@@ -119,7 +117,6 @@ const ProjectShowcases = () => {
             <Text
               color="#ffffff"
               fontSize={0.08}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="top"
               position={[0, 0.5, 0.1]}
@@ -136,7 +133,6 @@ const ProjectShowcases = () => {
                   key={index}
                   color="#9d4edd"
                   fontSize={0.06}
-                  font="/fonts/exo.woff"
                   anchorX="center"
                   anchorY="top"
                   position={[0, -index * 0.15, 0]}
@@ -153,7 +149,6 @@ const ProjectShowcases = () => {
               <Text
                 color="#0a0a0f"
                 fontSize={0.08}
-                font="/fonts/orbitron.woff"
                 anchorX="center"
                 anchorY="middle"
                 position={[0, 0, 0.01]}

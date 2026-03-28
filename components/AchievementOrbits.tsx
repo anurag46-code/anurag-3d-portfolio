@@ -87,7 +87,6 @@ const AchievementOrbits = () => {
       <Text
         color="#ffffff"
         fontSize={0.5}
-        font="/fonts/orbitron.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, 0, 0]}
@@ -118,7 +117,6 @@ const AchievementOrbits = () => {
             <Text
               color="#ffffff"
               fontSize={0.2}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="middle"
               position={[0, 0, 0]}
@@ -130,7 +128,6 @@ const AchievementOrbits = () => {
             <Text
               color="#ffffff"
               fontSize={0.1}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="top"
               position={[0, -0.5, 0]}
@@ -143,7 +140,6 @@ const AchievementOrbits = () => {
             <Text
               color={achievement.color}
               fontSize={0.08}
-              font="/fonts/orbitron.woff"
               anchorX="center"
               anchorY="top"
               position={[0, -0.7, 0]}
@@ -156,7 +152,6 @@ const AchievementOrbits = () => {
               <Text
                 color="#ffffff"
                 fontSize={0.07}
-                font="/fonts/exo.woff"
                 anchorX="center"
                 anchorY="top"
                 position={[0, -1, 0]}

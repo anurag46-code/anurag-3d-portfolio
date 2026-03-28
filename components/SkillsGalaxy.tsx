@@ -9,7 +9,6 @@ const SkillsGalaxy = () => {
       <Text
         color="#ffffff"
         fontSize={0.5}
-        font="/fonts/orbitron.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, 0, 0]}

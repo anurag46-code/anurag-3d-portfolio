@@ -71,7 +71,6 @@ const ContactSection = () => {
       <Text
         color="#ffffff"
         fontSize={0.6}
-        font="/fonts/orbitron.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, 3, 0]}
@@ -97,7 +96,6 @@ const ContactSection = () => {
         <Text
           color="#00f5ff"
           fontSize={0.2}
-          font="/fonts/orbitron.woff"
           anchorX="center"
           anchorY="top"
           position={[0, 1.5, -0.5]}
@@ -113,7 +111,6 @@ const ContactSection = () => {
             <Text
               color="#9d4edd"
               fontSize={0.08}
-              font="/fonts/exo.woff"
               anchorX="left"
               anchorY="middle"
               position={[-1.8, 0, 0.01]}
@@ -130,7 +127,6 @@ const ContactSection = () => {
           <Text
             color="#0a0a0f"
             fontSize={0.1}
-            font="/fonts/orbitron.woff"
             anchorX="center"
             anchorY="middle"
             position={[0, 0, 0.01]}
@@ -164,7 +160,6 @@ const ContactSection = () => {
             <Text
               color="#ffffff"
               fontSize={0.15}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="middle"
               position={[0, 0, 0.1]}
@@ -176,7 +171,6 @@ const ContactSection = () => {
             <Text
               color="#ffffff"
               fontSize={0.08}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="bottom"
               position={[0, 0.5, 0]}
@@ -188,7 +182,6 @@ const ContactSection = () => {
             <Text
               color={contact.color}
               fontSize={0.06}
-              font="/fonts/exo.woff"
               anchorX="center"
               anchorY="top"
               position={[0, -0.4, 0]}
@@ -205,7 +198,6 @@ const ContactSection = () => {
                 <Text
                   color="#0a0a0f"
                   fontSize={0.07}
-                  font="/fonts/orbitron.woff"
                   anchorX="center"
                   anchorY="middle"
                   position={[0, 0, 0.01]}
@@ -258,7 +250,6 @@ const ContactSection = () => {
       <Text
         color="#ffffff"
         fontSize={0.15}
-        font="/fonts/exo.woff"
         anchorX="center"
         anchorY="middle"
         position={[0, -2.5, 0]}
