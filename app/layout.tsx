@@ -1,5 +1,18 @@
 import type { Metadata } from 'next'
+import { Orbitron, Exo_2 } from 'next/font/google'
 import './globals.css'
+
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-orbitron',
+})
+
+const exo = Exo_2({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-exo',
+})
 
 export const metadata: Metadata = {
   title: 'Anurag - The Code Architect',
@@ -12,12 +25,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;500;600&display=swap" rel="stylesheet" />
-      </head>
+    <html lang="en" className={`${orbitron.variable} ${exo.variable}`}>
       <body className="antialiased">{children}</body>
     </html>
   )

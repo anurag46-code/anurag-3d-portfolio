@@ -192,7 +192,7 @@ const HTMLOverlay = () => {
       <section className="min-h-screen flex items-center justify-center relative">
         <div className="text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-orbitron neon-purple mb-8">Contact Section</h2>
-          <p className="text-xl md:text-2xl font-exo text-gray-300">Let's connect and collaborate</p>
+          <p className="text-xl md:text-2xl font-exo text-gray-300">Let&apos;s connect and collaborate</p>
         </div>
       </section>
     </div>

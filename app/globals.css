@@ -27,7 +27,7 @@ body {
 
 body {
   color: white;
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--font-exo), sans-serif;
 }
 
 /* Custom scrollbar */
@@ -104,11 +104,11 @@ canvas {
 
 /* Font classes */
 .font-orbitron {
-  font-family: 'Orbitron', monospace;
+  font-family: var(--font-orbitron), monospace;
 }
 
 .font-exo {
-  font-family: 'Exo 2', sans-serif;
+  font-family: var(--font-exo), sans-serif;
 }
 
 /* Color utility classes */
