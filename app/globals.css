@@ -89,12 +89,24 @@ canvas {
   height: 100vh;
   z-index: 10;
   pointer-events: none;
+  transition: opacity 0.5s ease-in-out;
 }
 
 .html-overlay nav,
 .html-overlay button,
 .html-overlay a {
   pointer-events: auto;
+}
+
+/* Fade overlay on scroll */
+.fade-on-scroll {
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  .fade-on-scroll {
+    opacity: var(--scroll-opacity, 1);
+  }
 }
 
 /* Ensure canvas is interactive */

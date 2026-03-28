@@ -57,9 +57,16 @@ const ProjectShowcases = () => {
       const offset = scroll.offset
       // Projects section appears between scroll positions 0.2 - 0.4
       const sectionProgress = Math.max(0, Math.min(1, (offset - 0.2) / 0.2))
-      groupRef.current.position.z = -10 + sectionProgress * 20 // Move forward as user scrolls
-      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
-      groupRef.current.position.y = Math.sin(performance.now() * 0.001 * 0.3) * 0.1
+      const sectionEndProgress = Math.max(0, Math.min(1, (offset - 0.4) / 0.2))
+      
+      // Only show section when it's active
+      groupRef.current.visible = sectionProgress > 0 && sectionEndProgress < 1
+      
+      if (groupRef.current.visible) {
+        groupRef.current.position.z = -10 + sectionProgress * 20 // Move forward as user scrolls
+        groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+        groupRef.current.position.y = Math.sin(performance.now() * 0.001 * 0.3) * 0.1
+      }
     }
   })
 

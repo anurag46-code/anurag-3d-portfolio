@@ -71,21 +71,28 @@ const AchievementOrbits = () => {
       const offset = scroll.offset
       // Achievements section appears between scroll positions 0.4 - 0.6
       const sectionProgress = Math.max(0, Math.min(1, (offset - 0.4) / 0.2))
-      groupRef.current.position.z = -15 + sectionProgress * 20 // Move forward as user scrolls
-      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+      const sectionEndProgress = Math.max(0, Math.min(1, (offset - 0.6) / 0.2))
       
-      achievements.forEach((achievement, index) => {
-        const angle = clock.elapsedTime * achievement.orbitSpeed
-        const x = Math.cos(angle) * achievement.orbitRadius
-        const z = Math.sin(angle) * achievement.orbitRadius
+      // Only show section when it's active
+      groupRef.current.visible = sectionProgress > 0 && sectionEndProgress < 1
+      
+      if (groupRef.current.visible) {
+        groupRef.current.position.z = -15 + sectionProgress * 20 // Move forward as user scrolls
+        groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
         
-        const achievementGroup = groupRef.current!.children[index + 1] as THREE.Group
-        if (achievementGroup) {
-          achievementGroup.position.x = x
-          achievementGroup.position.z = z
-          achievementGroup.rotation.y = angle
-        }
-      })
+        achievements.forEach((achievement, index) => {
+          const angle = clock.elapsedTime * achievement.orbitSpeed
+          const x = Math.cos(angle) * achievement.orbitRadius
+          const z = Math.sin(angle) * achievement.orbitRadius
+          
+          const achievementGroup = groupRef.current!.children[index + 1] as THREE.Group
+          if (achievementGroup) {
+            achievementGroup.position.x = x
+            achievementGroup.position.z = z
+            achievementGroup.rotation.y = angle
+          }
+        })
+      }
     }
   })
 

@@ -9,10 +9,14 @@ import AchievementOrbits from '../components/AchievementOrbits'
 import EducationTimeline from '../components/EducationTimeline'
 import ContactSection from '../components/ContactSection'
 import HTMLOverlay from '../components/HTMLOverlay'
+import ScrollOpacityHandler from '../components/ScrollOpacityHandler'
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
+      {/* Scroll Opacity Handler */}
+      <ScrollOpacityHandler />
+      
       {/* 3D Canvas */}
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
@@ -23,11 +27,6 @@ export default function Home() {
         <color attach="background" args={['#0a0a0f']} />
         <Suspense fallback={null}>
           <ScrollControls pages={5} damping={0.1} distance={1}>
-            {/* Hero Section (empty space for HTML overlay) */}
-            <mesh position={[0, 0, 0]}>
-              <planeGeometry args={[1, 1]} />
-              <meshBasicMaterial transparent opacity={0} />
-            </mesh>
             {/* Skills Galaxy */}
             <SkillsGalaxy />
             

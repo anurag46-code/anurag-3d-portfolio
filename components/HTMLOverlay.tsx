@@ -3,7 +3,6 @@
 import { motion } from 'framer-motion'
 
 const HTMLOverlay = () => {
-  
   const navItems = [
     { name: 'Home', href: '#hero' },
     { name: 'Skills', href: '#skills' },
@@ -14,7 +13,7 @@ const HTMLOverlay = () => {
   ]
 
   return (
-    <div className="html-overlay">
+    <div className="html-overlay fade-on-scroll">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}

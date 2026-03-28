@@ -66,9 +66,15 @@ const ContactSection = () => {
       const offset = scroll.offset
       // Contact section appears between scroll positions 0.8 - 1.0
       const sectionProgress = Math.max(0, Math.min(1, (offset - 0.8) / 0.2))
-      groupRef.current.position.z = -25 + sectionProgress * 20 // Move forward as user scrolls
-      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
-      groupRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.05) * 0.1
+      
+      // Only show section when it's active
+      groupRef.current.visible = sectionProgress > 0
+      
+      if (groupRef.current.visible) {
+        groupRef.current.position.z = -25 + sectionProgress * 20 // Move forward as user scrolls
+        groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+        groupRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.05) * 0.1
+      }
     }
   })
 
