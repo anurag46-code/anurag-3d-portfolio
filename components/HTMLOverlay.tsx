@@ -1,47 +1,35 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useState } from 'react'
 
 const HTMLOverlay = () => {
   const [opacity, setOpacity] = useState(1)
-  const observerRef = useRef<IntersectionObserver | null>(null)
   
   useEffect(() => {
-    // Create an Intersection Observer to detect when user scrolls past hero section
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0]
-        // When hero section starts leaving viewport, fade out
-        const newOpacity = Math.max(0, entry.intersectionRatio)
-        setOpacity(newOpacity)
-        console.log('Intersection ratio:', entry.intersectionRatio, 'Opacity:', newOpacity)
-      },
-      {
-        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-        rootMargin: '0px'
-      }
-    )
+    const handleScroll = () => {
+      // Use multiple methods to get scroll position
+      const scrollY = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0
+      const windowHeight = window.innerHeight
+      
+      // Calculate scroll progress - fade out quickly
+      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.3)) // Fade out in 30% of screen height
+      
+      // Fade out overlay as user scrolls down
+      const newOpacity = Math.max(0, 1 - scrollProgress)
+      setOpacity(newOpacity)
+      
+      console.log('ScrollY:', scrollY, 'WindowHeight:', windowHeight, 'Progress:', scrollProgress, 'Opacity:', newOpacity)
+    }
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true })
     
-    // Observe a marker element at the bottom of the hero section
-    const marker = document.createElement('div')
-    marker.style.height = '1px'
-    marker.style.position = 'absolute'
-    marker.style.top = '80vh' // 80% down the viewport
-    marker.style.left = '0'
-    marker.style.width = '1px'
-    document.body.appendChild(marker)
-    
-    observer.observe(marker)
-    observerRef.current = observer
+    // Force initial calculation
+    setTimeout(handleScroll, 100)
     
     return () => {
-      if (observerRef.current) {
-        observerRef.current.disconnect()
-      }
-      if (marker && marker.parentNode) {
-        marker.parentNode.removeChild(marker)
-      }
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
