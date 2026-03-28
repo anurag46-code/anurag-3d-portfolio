@@ -9,14 +9,10 @@ import AchievementOrbits from '../components/AchievementOrbits'
 import EducationTimeline from '../components/EducationTimeline'
 import ContactSection from '../components/ContactSection'
 import HTMLOverlay from '../components/HTMLOverlay'
-import ScrollOpacityHandler from '../components/ScrollOpacityHandler'
 
 export default function Home() {
   return (
     <main className="relative min-h-screen overflow-hidden">
-      {/* Scroll Opacity Handler */}
-      <ScrollOpacityHandler />
-      
       {/* 3D Canvas */}
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}

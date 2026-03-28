@@ -1,8 +1,35 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 const HTMLOverlay = () => {
+  const [opacity, setOpacity] = useState(1)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      
+      // Calculate scroll progress (0 to 1) - fade out in first screen height
+      const scrollProgress = Math.min(1, scrollY / windowHeight)
+      
+      // Fade out overlay as user scrolls down (complete fade by 50% scroll)
+      const newOpacity = Math.max(0, 1 - scrollProgress * 2)
+      setOpacity(newOpacity)
+    }
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    
+    // Initial calculation
+    handleScroll()
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
   const navItems = [
     { name: 'Home', href: '#hero' },
     { name: 'Skills', href: '#skills' },
@@ -13,7 +40,7 @@ const HTMLOverlay = () => {
   ]
 
   return (
-    <div className="html-overlay">
+    <div className="html-overlay" style={{ opacity }}>
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}
