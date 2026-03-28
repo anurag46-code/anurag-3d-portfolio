@@ -11,11 +11,11 @@ const HTMLOverlay = () => {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
       
-      // Calculate scroll progress (0 to 1) - fade out in first screen height
-      const scrollProgress = Math.min(1, scrollY / windowHeight)
+      // Calculate scroll progress (0 to 1) - fade out quickly
+      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.3)) // Fade out in 30% of screen height
       
-      // Fade out overlay as user scrolls down (complete fade by 50% scroll)
-      const newOpacity = Math.max(0, 1 - scrollProgress * 2)
+      // Fade out overlay as user scrolls down (complete fade by 30% scroll)
+      const newOpacity = Math.max(0, 1 - scrollProgress)
       setOpacity(newOpacity)
     }
 
