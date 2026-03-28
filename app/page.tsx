@@ -22,7 +22,12 @@ export default function Home() {
       >
         <color attach="background" args={['#0a0a0f']} />
         <Suspense fallback={null}>
-          <ScrollControls pages={6} damping={0.1} distance={1}>
+          <ScrollControls pages={5} damping={0.1} distance={1}>
+            {/* Hero Section (empty space for HTML overlay) */}
+            <mesh position={[0, 0, 0]}>
+              <planeGeometry args={[1, 1]} />
+              <meshBasicMaterial transparent opacity={0} />
+            </mesh>
             {/* Skills Galaxy */}
             <SkillsGalaxy />
             

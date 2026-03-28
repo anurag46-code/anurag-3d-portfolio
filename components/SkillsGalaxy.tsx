@@ -1,11 +1,27 @@
 'use client'
 
 import React from 'react'
-import { Text } from '@react-three/drei'
+import { Text, useScroll } from '@react-three/drei'
+import { useFrame } from '@react-three/fiber'
+import * as THREE from 'three'
 
 const SkillsGalaxy = () => {
+  const scroll = useScroll()
+  const groupRef = React.useRef<THREE.Group>(null)
+  
+  useFrame(() => {
+    if (groupRef.current) {
+      // Position based on scroll offset (0-1 range)
+      const offset = scroll.offset
+      // Skills section appears between scroll positions 0.0 - 0.2
+      const sectionProgress = Math.max(0, Math.min(1, (offset - 0.0) / 0.2))
+      groupRef.current.position.z = -5 + sectionProgress * 20 // Move forward as user scrolls
+      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+    }
+  })
+  
   return (
-    <group position={[0, 0, -5]}>
+    <group ref={groupRef} position={[0, 0, -5]}>
       <Text
         color="#ffffff"
         fontSize={0.5}

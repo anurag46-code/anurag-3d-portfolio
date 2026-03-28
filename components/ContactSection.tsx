@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Float } from '@react-three/drei'
+import { Text, Float, useScroll } from '@react-three/drei'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
@@ -18,6 +18,7 @@ interface ContactMethod {
 
 const ContactSection = () => {
   const groupRef = useRef<THREE.Group>(null)
+  const scroll = useScroll()
   const [hoveredContact, setHoveredContact] = useState<number | null>(null)
 
   const contactMethods: ContactMethod[] = [
@@ -61,6 +62,12 @@ const ContactSection = () => {
 
   useFrame(({ clock }) => {
     if (groupRef.current) {
+      // Position based on scroll offset (0-1 range)
+      const offset = scroll.offset
+      // Contact section appears between scroll positions 0.8 - 1.0
+      const sectionProgress = Math.max(0, Math.min(1, (offset - 0.8) / 0.2))
+      groupRef.current.position.z = -25 + sectionProgress * 20 // Move forward as user scrolls
+      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
       groupRef.current.rotation.y = Math.sin(clock.elapsedTime * 0.05) * 0.1
     }
   })

@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Float } from '@react-three/drei'
+import { Text, Float, useScroll } from '@react-three/drei'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
@@ -18,6 +18,7 @@ interface Project {
 
 const ProjectShowcases = () => {
   const groupRef = useRef<THREE.Group>(null)
+  const scroll = useScroll()
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
 
   const projects: Project[] = [
@@ -50,9 +51,15 @@ const ProjectShowcases = () => {
     }
   ]
 
-  useFrame(({ clock }) => {
+  useFrame(() => {
     if (groupRef.current) {
-      groupRef.current.position.y = Math.sin(clock.elapsedTime * 0.3) * 0.1
+      // Position based on scroll offset (0-1 range)
+      const offset = scroll.offset
+      // Projects section appears between scroll positions 0.2 - 0.4
+      const sectionProgress = Math.max(0, Math.min(1, (offset - 0.2) / 0.2))
+      groupRef.current.position.z = -10 + sectionProgress * 20 // Move forward as user scrolls
+      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+      groupRef.current.position.y = Math.sin(performance.now() * 0.001 * 0.3) * 0.1
     }
   })
 

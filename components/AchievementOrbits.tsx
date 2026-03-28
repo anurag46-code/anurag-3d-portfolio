@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { useFrame } from '@react-three/fiber'
-import { Text, Float } from '@react-three/drei'
+import { Text, Float, useScroll } from '@react-three/drei'
 import { useRef, useState } from 'react'
 import * as THREE from 'three'
 
@@ -19,6 +19,7 @@ interface Achievement {
 
 const AchievementOrbits = () => {
   const groupRef = useRef<THREE.Group>(null)
+  const scroll = useScroll()
   const [hoveredAchievement, setHoveredAchievement] = useState<number | null>(null)
 
   const achievements: Achievement[] = [
@@ -66,6 +67,13 @@ const AchievementOrbits = () => {
 
   useFrame(({ clock }) => {
     if (groupRef.current) {
+      // Position based on scroll offset (0-1 range)
+      const offset = scroll.offset
+      // Achievements section appears between scroll positions 0.4 - 0.6
+      const sectionProgress = Math.max(0, Math.min(1, (offset - 0.4) / 0.2))
+      groupRef.current.position.z = -15 + sectionProgress * 20 // Move forward as user scrolls
+      groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
+      
       achievements.forEach((achievement, index) => {
         const angle = clock.elapsedTime * achievement.orbitSpeed
         const x = Math.cos(angle) * achievement.orbitRadius
