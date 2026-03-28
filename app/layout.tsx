@@ -17,6 +17,9 @@ const exo = Exo_2({
 export const metadata: Metadata = {
   title: 'Anurag - The Code Architect',
   description: 'Interactive 3D Portfolio showcasing skills, projects, and achievements',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({
@@ -25,8 +28,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${orbitron.variable} ${exo.variable}`}>
-      <body className="antialiased">{children}</body>
+    <html lang="en">
+      <body className={`antialiased ${orbitron.variable} ${exo.variable}`}>{children}</body>
     </html>
   )
 }

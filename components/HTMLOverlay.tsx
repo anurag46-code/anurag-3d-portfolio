@@ -1,48 +1,47 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 const HTMLOverlay = () => {
   const [opacity, setOpacity] = useState(1)
+  const observerRef = useRef<IntersectionObserver | null>(null)
   
   useEffect(() => {
-    const handleScroll = () => {
-      // Use window scrollY for consistent fading
-      const scrollY = window.scrollY || document.documentElement.scrollTop
-      const windowHeight = window.innerHeight
-      
-      // Calculate scroll progress - fade out quickly
-      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.2)) // Fade out in 20% of screen height
-      
-      // Fade out overlay as user scrolls down
-      const newOpacity = Math.max(0, 1 - scrollProgress)
-      setOpacity(newOpacity)
-      
-      console.log('ScrollY:', scrollY, 'Opacity:', newOpacity) // Debug
-    }
-
-    // Add scroll listener with throttle
-    let ticking = false
-    const throttledScroll = () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          handleScroll()
-          ticking = false
-        })
-        ticking = true
+    // Create an Intersection Observer to detect when user scrolls past hero section
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        // When hero section starts leaving viewport, fade out
+        const newOpacity = Math.max(0, entry.intersectionRatio)
+        setOpacity(newOpacity)
+        console.log('Intersection ratio:', entry.intersectionRatio, 'Opacity:', newOpacity)
+      },
+      {
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        rootMargin: '0px'
       }
-    }
-
-    window.addEventListener('scroll', throttledScroll, { passive: true })
-    window.addEventListener('resize', throttledScroll, { passive: true })
+    )
     
-    // Initial calculation
-    handleScroll()
+    // Observe a marker element at the bottom of the hero section
+    const marker = document.createElement('div')
+    marker.style.height = '1px'
+    marker.style.position = 'absolute'
+    marker.style.top = '80vh' // 80% down the viewport
+    marker.style.left = '0'
+    marker.style.width = '1px'
+    document.body.appendChild(marker)
+    
+    observer.observe(marker)
+    observerRef.current = observer
     
     return () => {
-      window.removeEventListener('scroll', throttledScroll)
-      window.removeEventListener('resize', throttledScroll)
+      if (observerRef.current) {
+        observerRef.current.disconnect()
+      }
+      if (marker && marker.parentNode) {
+        marker.parentNode.removeChild(marker)
+      }
     }
   }, [])
 

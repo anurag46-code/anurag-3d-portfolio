@@ -21,14 +21,14 @@ const SkillsGalaxy = () => {
       groupRef.current.visible = sectionProgress > 0 && sectionEndProgress < 1
       
       if (groupRef.current.visible) {
-        groupRef.current.position.z = -5 + sectionProgress * 20 // Move forward as user scrolls
+        groupRef.current.position.z = -2 + sectionProgress * 10 // Move forward as user scrolls (closer starting position)
         groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
       }
     }
   })
   
   return (
-    <group ref={groupRef} position={[0, 0, -5]}>
+    <group ref={groupRef} position={[0, 0, -2]}>
       <Text
         color="#ffffff"
         fontSize={0.5}
