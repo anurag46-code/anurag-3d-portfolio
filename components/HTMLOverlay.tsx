@@ -13,7 +13,7 @@ const HTMLOverlay = () => {
   ]
 
   return (
-    <div className="html-overlay fade-on-scroll">
+    <div className="html-overlay">
       {/* Navigation */}
       <motion.nav
         initial={{ y: -100 }}

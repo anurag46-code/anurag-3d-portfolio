@@ -7,16 +7,18 @@ const ScrollOpacityHandler = () => {
     const handleScroll = () => {
       const scrollY = window.scrollY
       const windowHeight = window.innerHeight
-      const documentHeight = document.documentElement.scrollHeight
       
-      // Calculate scroll progress (0 to 1)
-      const scrollProgress = scrollY / (documentHeight - windowHeight)
+      // Calculate scroll progress (0 to 1) - fade out in first screen height
+      const scrollProgress = Math.min(1, scrollY / windowHeight)
       
-      // Fade out overlay as user scrolls down
+      // Fade out overlay as user scrolls down (complete fade by 50% scroll)
       const opacity = Math.max(0, 1 - scrollProgress * 2)
       
-      // Update CSS variable
-      document.documentElement.style.setProperty('--scroll-opacity', opacity.toString())
+      // Apply opacity directly to HTML overlay element
+      const overlay = document.querySelector('.html-overlay') as HTMLElement
+      if (overlay) {
+        overlay.style.opacity = opacity.toString()
+      }
     }
 
     // Add scroll listener
