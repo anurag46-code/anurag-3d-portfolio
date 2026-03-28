@@ -8,25 +8,41 @@ const HTMLOverlay = () => {
   
   useEffect(() => {
     const handleScroll = () => {
-      const scrollY = window.scrollY
+      // Use window scrollY for consistent fading
+      const scrollY = window.scrollY || document.documentElement.scrollTop
       const windowHeight = window.innerHeight
       
-      // Calculate scroll progress (0 to 1) - fade out quickly
-      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.3)) // Fade out in 30% of screen height
+      // Calculate scroll progress - fade out quickly
+      const scrollProgress = Math.min(1, scrollY / (windowHeight * 0.2)) // Fade out in 20% of screen height
       
-      // Fade out overlay as user scrolls down (complete fade by 30% scroll)
+      // Fade out overlay as user scrolls down
       const newOpacity = Math.max(0, 1 - scrollProgress)
       setOpacity(newOpacity)
+      
+      console.log('ScrollY:', scrollY, 'Opacity:', newOpacity) // Debug
     }
 
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll, { passive: true })
+    // Add scroll listener with throttle
+    let ticking = false
+    const throttledScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll()
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
+    window.addEventListener('scroll', throttledScroll, { passive: true })
+    window.addEventListener('resize', throttledScroll, { passive: true })
     
     // Initial calculation
     handleScroll()
     
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', throttledScroll)
+      window.removeEventListener('resize', throttledScroll)
     }
   }, [])
 

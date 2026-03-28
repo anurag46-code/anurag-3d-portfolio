@@ -12,7 +12,7 @@ import HTMLOverlay from '../components/HTMLOverlay'
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen overflow-hidden">
+    <main className="relative min-h-screen overflow-auto">
       {/* 3D Canvas */}
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
@@ -43,6 +43,9 @@ export default function Home() {
       
       {/* HTML Overlay */}
       <HTMLOverlay />
+      
+      {/* Spacer to ensure scrollable content */}
+      <div style={{ height: '500vh' }} />
     </main>
   )
 }
