@@ -13,18 +13,19 @@ const SkillsGalaxy = () => {
     if (groupRef.current) {
       // Position based on scroll offset (0-1 range)
       const offset = scroll.offset
-      console.log('Skills Galaxy - Scroll offset:', offset) // Debug
       
       // Skills section appears between scroll positions 0.0 - 0.2
       const sectionProgress = Math.max(0, Math.min(1, (offset - 0.0) / 0.2))
       
-      // Always show for testing - remove visibility control temporarily
-      groupRef.current.visible = true // sectionProgress > 0
+      // Show section when active
+      groupRef.current.visible = sectionProgress > 0
       
       if (groupRef.current.visible) {
         groupRef.current.position.z = -2 + sectionProgress * 10 // Move forward as user scrolls
         groupRef.current.scale.setScalar(0.8 + sectionProgress * 0.4) // Scale up as section becomes active
       }
+      
+      console.log('Skills Galaxy - Scroll offset:', offset.toFixed(2), 'Progress:', sectionProgress.toFixed(2), 'Visible:', groupRef.current.visible)
     }
   })
   
