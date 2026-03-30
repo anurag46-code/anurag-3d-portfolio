@@ -58,43 +58,43 @@ const HeroOverlay = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="h-full flex items-center justify-center relative">
+      <section className="min-h-screen flex items-center justify-center relative py-20">
         <div className="text-center px-4 sm:px-6 lg:px-8">
           {/* Main Title */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-orbitron font-black mb-6">
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black mb-4">
             <span className="neon-text">ANU</span>
             <span className="neon-purple">RAG</span>
           </h1>
 
           {/* Subtitle */}
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-exo font-light mb-8 text-gray-300">
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-exo font-light mb-6 text-gray-300">
             <span className="neon-green">Software Developer</span> & <span className="neon-text">Cloud Architect</span>
           </h2>
 
           {/* Tagline */}
-          <p className="text-lg md:text-xl lg:text-2xl font-exo font-medium mb-12 max-w-4xl mx-auto text-gray-400">
+          <p className="text-lg md:text-xl lg:text-2xl font-exo font-medium mb-8 max-w-3xl mx-auto text-gray-400">
             Building scalable cloud solutions with <span className="neon-text">AWS</span>, <span className="neon-purple">Kubernetes</span>, 
             and <span className="neon-green">modern web technologies</span>
           </p>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-2xl mx-auto">
+          <div className="grid grid-cols-3 gap-8 mb-8">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-text mb-2">8.94</div>
-              <div className="text-sm md:text-base font-exo text-gray-400">CGPA</div>
+              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-text mb-1">8.94</div>
+              <div className="text-sm font-exo text-gray-400">CGPA</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-purple mb-2">4★</div>
-              <div className="text-sm md:text-base font-exo text-gray-400">CodeChef</div>
+              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-purple mb-1">4★</div>
+              <div className="text-sm font-exo text-gray-400">CodeChef</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-green mb-2">AWS</div>
-              <div className="text-sm md:text-base font-exo text-gray-400">Certified</div>
+              <div className="text-3xl md:text-4xl font-orbitron font-bold neon-green mb-1">AWS</div>
+              <div className="text-sm font-exo text-gray-400">Certified</div>
             </div>
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex gap-4 justify-center">
             <button className="px-8 py-3 bg-neon-blue text-dark-space font-exo font-semibold rounded-lg glow-on-hover">
               View My Work
             </button>
