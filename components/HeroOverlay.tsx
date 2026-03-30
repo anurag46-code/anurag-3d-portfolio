@@ -58,7 +58,7 @@ const HeroOverlay = () => {
       </nav>
 
       {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center relative py-20">
+      <section className="min-h-screen flex items-center justify-center relative pt-8">
         <div className="text-center px-4 sm:px-6 lg:px-8">
           {/* Main Title */}
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-orbitron font-black mb-4">
