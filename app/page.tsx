@@ -13,11 +13,11 @@ import HeroOverlay from '../components/HeroOverlay'
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen" style={{ overflow: 'hidden' }}>
+    <main className="relative" style={{ width: '100vw', height: '100vh', overflow: 'hidden' }}>
       {/* 3D Canvas - Single scroll system for everything */}
       <Canvas
         camera={{ position: [0, 0, 5], fov: 50 }}
-        className="fixed top-0 left-0 w-full h-full"
+        className="fixed top-0 left-0 w-screen h-screen"
         gl={{ antialias: true, alpha: true }}
       >
         <color attach="background" args={['#0a0a0f']} />
